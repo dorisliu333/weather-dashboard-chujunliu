@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>   
+     
+    <div class="main col">
+     <header>Weather Dashboard</header>
+      <div class="weather-dashboard-container col-8">
+        <div class="current-weather-display">
+            <span id="current-city"></span>
+            <span id="current-temp"></span>
+            <div class="current-humidity-container">
+                <span>Humidity</span>
+                <span id="current-humidity"></span>
+            </div>
+            <div class="current-wind-container">
+                <span>Wind</span>
+                <span id="current-wind"></span>
+            </div>
+            <div class="current-uvindex-container">
+                <span>UV index</span>
+                <span id="current-uvindex"></span>
+            </div>
+            
+        </div>
+        <div class="app-bottom row">
+          <div class="search-section col-12 col-md-6 col-lg-6">
+            <div class="search-header">Search for a city:</div>
+            <form class="search-bar">
+              <input type="text" name="city" required />
+              <input type="submit" value="Search" />
+            </form>
+            <div class="city-history-display">city history</div>
+          </div>
+          <div class="five-day-forecast col-12 col-md-6 col-lg-6 ">
+            <div class="five-day-forecast-header">Forecast</div>
+            <div class="forecastDisplay row"></div>
+                
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="./script.js"></script>
+</html>
