@@ -42,7 +42,7 @@ function displayCurrentCityWeather(data){
 }
 
 function displayForecast(data){
-    for(var i =0; i<5; i++){
+    for(var i =0; i<data.list.length; i=i+8){
         var forecastItem =  document.createElement('div');
         var forecastItemDate = document.createElement('div');
         var forecastItemTemp = document.createElement('div');
