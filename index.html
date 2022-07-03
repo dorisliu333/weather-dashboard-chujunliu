@@ -14,41 +14,50 @@
     <link rel="stylesheet" href="./css/style.css" />
     <title>Weather Dashboard</title>
   </head>
-  <body>   
-     
+  <body>
     <div class="main col">
-     <header>Weather Dashboard</header>
+      <header>Weather Dashboard</header>
       <div class="weather-dashboard-container col-8">
         <div class="current-weather-display">
+          <div class="current-weather-display-left">
             <span id="current-city"></span>
             <span id="current-temp"></span>
-            <div class="current-humidity-container">
-                <span>Humidity</span>
-                <span id="current-humidity"></span>
+
+          </div>
+          <div class="current-weather-display-right row">
+            <div class="current-humidity-container col-4">
+              <div>Humidity</div>
+              <div id="current-humidity"></div>
             </div>
-            <div class="current-wind-container">
-                <span>Wind</span>
-                <span id="current-wind"></span>
+            <div class="current-wind-container col-4">
+              <div>Wind</div>
+              <div id="current-wind"></div>
             </div>
-            <div class="current-uvindex-container">
-                <span>UV index</span>
-                <span id="current-uvindex"></span>
+            <div class="current-uvindex-container col-4">
+              <div>UV index</div>
+              <div id="current-uvindex">10</div>
             </div>
-            
+          </div>
+      
         </div>
         <div class="app-bottom row">
-          <div class="search-section col-12 col-md-6 col-lg-6">
+          <div class="search-section col-12 col-md-4 col-lg-4">
             <div class="search-header">Search for a city:</div>
             <form class="search-bar">
-              <input type="text" name="city" required />
-              <input type="submit" value="Search" />
+              <input type="text" name="city" id="cityName" required />
+              <button
+                type="button"
+                onclick="getCityName()"
+                class="btn btn-light btn-sm"
+              >
+                Submit
+              </button>
             </form>
-            <div class="city-history-display">city history</div>
+            <div class="city-history-display"></div>
           </div>
-          <div class="five-day-forecast col-12 col-md-6 col-lg-6 ">
+          <div class="five-day-forecast col-12 col-md-8 col-lg-8">
             <div class="five-day-forecast-header">Forecast</div>
-            <div class="forecastDisplay row"></div>
-                
+            <div class="forecastDisplay"></div>
           </div>
         </div>
       </div>
