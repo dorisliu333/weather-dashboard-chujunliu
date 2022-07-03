@@ -1,5 +1,6 @@
 var currentCityEl = document.querySelector('#current-city');
 var currentTemp = document.querySelector('#current-temp');
+var currentIcon = document.querySelector('#current-icon');
 var currentHumidity = document.querySelector('#current-humidity');
 var currentWind = document.querySelector('#current-wind');
 var currentUvindex = document.querySelector('#current-uvindex');
@@ -43,6 +44,7 @@ function getWeather(currentCity) {
         if (response.ok) {
             storeCityName(currentCity);
             response.json().then(function (data) {
+                console.log(data)
                 displaycurrentCityWeather(data);
                 getForecast(currentCity);
                 displayCityHistory();
@@ -60,7 +62,7 @@ function getForecast(currentCity){
     fetch(forecastUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                console.log(data)
+                
                 displayForecast(data);
             });
         } else {
@@ -74,6 +76,7 @@ function displaycurrentCityWeather(data){
     currentTemp.textContent = Math.round(data.main.temp)+ "℃";
     currentHumidity.textContent = data.main.humidity + "%";
     currentWind.textContent = data.wind.speed + "K/M";
+    currentIcon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
 }
 
 function displayForecast(data){
