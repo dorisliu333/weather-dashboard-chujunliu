@@ -1,114 +1,112 @@
-body{ 
-    font-family:'Source Serif Pro', serif;
+body {
+  font-family: sans-serif;
 }
 
-header{
-    color: #fff;
-    font-size: 2.5rem;
+header {
+  color: #fff;
+  font-size: 2.5rem;
 }
 /* background-image: url(https://wallpaperaccess.com/full/1678169.jpg); */
-.main{
-    background-image: url(https://wallpaperaccess.com/full/885059.jpg);
-    min-height: 100vh;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.main {
+  background-image: url(https://wallpaperaccess.com/full/885059.jpg);
+  min-height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.weather-dashboard-container{
-    margin-top: 20px;
-    background: #fff;
-    border-radius: 32px;
-    box-shadow: 0 0 16px rgb(0 0 0 / 50%);
+.weather-dashboard-container {
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 0 16px rgb(0 0 0 / 50%);
 }
 
-.current-weather-display{
-    background-image: url(https://wallpaperaccess.com/full/1678258.png);
-    background-size: cover;
-    display: flex;
-    padding: 80px 0;
-    flex-direction: row;
-    background-size: cover;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    color: black;
-    position: relative;
+.current-weather-display {
+  background-image: url(https://wallpaperaccess.com/full/1678258.png);
+  background-size: cover;
+  display: flex;
+  padding: 80px 0;
+  flex-direction: row;
+  background-size: cover;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  color: black;
+  position: relative;
 }
-.current-weather-display-left{
-    margin-top: -4%;
-    margin-left: 30%;
+.current-weather-display-left {
+  margin-top: -2%;
+  margin-left: 30%;
 }
-#current-city{
-    font-size: 1.8rem;
-}
-
-#current-temp{
-    padding-left: 2%;
-    font-size: 1.5rem;
+#current-city {
+  font-size: 1.8rem;
 }
 
-.current-weather-display-right{
-    margin-left: 5%;
-    text-align: center;
-}
-/* .current-humidity-container,.current-wind-container,.current-uvindex-container{
-    margin: 10%;
-    display: flex;
-    flex-direction: column;
-} */
-
-.app-bottom{
-    padding: 3%;
-}
-.search-header{
-    font-size: 1.5rem;
+#current-temp {
+  padding-left: 2%;
+  font-size: 1.5rem;
 }
 
-.search-bar{
-    display: flex;
-    align-items: center;
+.current-weather-display-right {
+  width: 300px;
+  margin-left: 5%;
+  text-align: center;
 }
 
-#cityName{
-    margin-right: 2%;
+.app-bottom {
+  padding: 3%;
 }
-.city-history-display{
-    margin-left: 5%;
-}
-
-a{
-    text-decoration: none;
-    color: darkgrey;
+.search-header {
+  font-size: 1.5rem;
 }
 
-.five-day-forecast{
-    display: flex;
-    flex-direction: column;
-
-}
-.five-day-forecast-header{
-    font-size: 1.5rem;
+.search-bar {
+  display: flex;
+  align-items: center;
 }
 
-.forecastDisplay{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 5%;
+#cityName {
+  margin-right: 2%;
+}
+.city-history-display {
+  margin-left: 5%;
 }
 
-#forecastItem{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.1rem;
+a {
+  text-decoration: none;
+  color: darkgrey;
 }
-#forecastDate,#forecastTemp,#forecastDescrip{
-    margin-bottom: 10%;
+
+.five-day-forecast {
+  display: flex;
+  flex-direction: column;
 }
-#icon{
-    width:50px;
-    height: 50px;
+
+.five-day-forecast-header {
+  font-size: 1.5rem;
+}
+
+.forecastDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+#forecastItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+}
+#forecastDate,
+#forecastTemp,
+#forecastDescrip {
+  margin-bottom: 10%;
+}
+#icon {
+  width: 50px;
+  height: 50px;
 }
