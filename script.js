@@ -35,7 +35,7 @@ function displayCityHistory() {
     })
 }
 function getGeo(currentCity) {
-    const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${currentCity}, AU&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`;
+    const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${currentCity}, AU&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`;
     fetch(geoUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
@@ -91,7 +91,7 @@ function displaycurrentCityWeather(city, data) {
         currentUvindex.style.backgroundColor = "#3EA72C"
     }
     // currentIcon.src = `http://openweathermap.org/img/w/${data.current.weather[0].icon}.png`
-    currentIcon.src = `http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
+    currentIcon.src = `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
 }
 
 function displayForecast(data) {
@@ -109,7 +109,7 @@ function displayForecast(data) {
         var time = moment.unix(data.daily[i].dt).format("YYYY-MM-DD");
         forecastItemDate.textContent = time;
         forecastItemTemp.textContent = Math.round(data.daily[i].temp.day) + "℃";
-        forecastItemIcon.src = `http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
+        forecastItemIcon.src = `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
         forecastItemDescription.textContent = data.daily[i].weather[0].main
         forecastItem.appendChild(forecastItemDate);
         forecastItem.appendChild(forecastItemIcon);
