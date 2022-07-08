@@ -36,7 +36,7 @@ function displayCityHistory() {
     })
 }
 function getGeo(currentCity) {
-    const geoUrl = `http://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`
+    const geoUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`
     $.ajax({
         type: "GET",
         url: geoUrl,
