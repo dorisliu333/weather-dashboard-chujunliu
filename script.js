@@ -8,6 +8,7 @@ const currentUvindex = document.querySelector('#current-uvindex');
 const forecastEl = document.querySelector('.forecastDisplay');
 const inputCity = document.querySelector('#cityName');
 const cityDisplayEl = document.querySelector('.city-history-display');
+// const myModalEl = document.querySelector('.my-modal');
 var currentCity = "Sydney";
 
 function getCityName() {
@@ -36,17 +37,18 @@ function displayCityHistory() {
     })
 }
 function getGeo(currentCity) {
-    const geoUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`
-    $.ajax({
-        type: "GET",
-        url: geoUrl,
-        dataType: "json",
-        success: function (data) {
-            lat = data.coord.lat;
-            lon = data.coord.lon;
-            let city = currentCity;
-            getWeather(city, lat, lon)
-
+    const geoUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`;
+    fetch(geoUrl).then(function(response){
+        if (response.ok) {
+            response.json().then(function (data) {
+                lat = data.coord.lat;
+                lon = data.coord.lon;
+                let city = currentCity;
+                getWeather(city, lat, lon)
+            });
+        } else {
+            showError();
+            console.log('Error: ' + response.statusText);
         }
     })
 }
@@ -63,7 +65,8 @@ function getWeather(city, lat, lon) {
                 displayCityHistory();
             });
         } else {
-            alert('Error: ' + response.statusText);
+            showError();
+            console.log('Error: ' + response.statusText);
         }
     });
 };
@@ -142,4 +145,7 @@ function storeCityName(item) {
     localStorage.setItem("cities", JSON.stringify(cityList))
 }
 
+function showError(){
+    $('#myModal').modal('show');
+}
 
