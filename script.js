@@ -1,6 +1,7 @@
 const currentCityEl = document.querySelector('#current-city');
 const currentTemp = document.querySelector('#current-temp');
 const currentIcon = document.querySelector('#current-icon');
+const currentTime = document.querySelector('#current-time');
 const currentHumidity = document.querySelector('#current-humidity');
 const currentWind = document.querySelector('#current-wind');
 const currentUvindex = document.querySelector('#current-uvindex');
@@ -35,24 +36,19 @@ function displayCityHistory() {
     })
 }
 function getGeo(currentCity) {
-    const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${currentCity}, AU&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`;
-    fetch(geoUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                if (!data[0] || data[0].name !== currentCity) {
-                    alert('Error: ' + response.statusText);
-                    return;
-                }
-                lat = data[0].lat;
-                lon = data[0].lon;
-                let city = currentCity;
-                getWeather(city, lat, lon)
+    const geoUrl = `http://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=f7926986a7f8a9f6a2f7973e8afc3bbd`
+    $.ajax({
+        type: "GET",
+        url: geoUrl,
+        dataType: "json",
+        success: function (data) {
+            lat = data.coord.lat;
+            lon = data.coord.lon;
+            let city = currentCity;
+            getWeather(city, lat, lon)
 
-            });
-        } else {
-            alert('Error: ' + response.statusText);
         }
-    });
+    })
 }
 getGeo(currentCity)
 
@@ -71,50 +67,58 @@ function getWeather(city, lat, lon) {
         }
     });
 };
-
+let curTime = moment().format("YYYY-MM-DD");
 function displaycurrentCityWeather(city, data) {
+    let time = moment().format("YYYY-MM-DD");
     currentCityEl.textContent = city;
     currentTemp.textContent = Math.round(data.current.temp) + "℃";
     currentHumidity.textContent = data.current.humidity + "%";
     currentWind.textContent = data.current.wind_speed + "K/M";
     let uvIndex = data.current.uvi;
     currentUvindex.textContent = uvIndex;
+    currentTime.textContent = curTime;
     if (uvIndex >= 11) {
         currentUvindex.style.backgroundColor = "#B567A4"
-    } else if (8 <= uvIndex && uvIndex <= 10) {
+    } else if (8 <= uvIndex && uvIndex < 11) {
         currentUvindex.style.backgroundColor = "#E5320F"
-    } else if (6 <= uvIndex && uvIndex <= 7) {
+    } else if (6 <= uvIndex && uvIndex < 8) {
         currentUvindex.style.backgroundColor = "#F18B01"
-    } else if (3 <= uvIndex && uvIndex <= 5) {
+    } else if (3 <= uvIndex && uvIndex < 6) {
         currentUvindex.style.backgroundColor = "#FFF300"
-    } else if (0 <= uvIndex && uvIndex <= 2) {
+    } else if (0 <= uvIndex && uvIndex < 3) {
         currentUvindex.style.backgroundColor = "#3EA72C"
     }
-    // currentIcon.src = `http://openweathermap.org/img/w/${data.current.weather[0].icon}.png`
     currentIcon.src = `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
 }
 
 function displayForecast(data) {
-    for (let i = 1; i < 6; i++) {
+    let time = moment.unix(data.daily[0].dt).format("YYYY-MM-DD");
+    let i;
+    curTime === time ? i =1 : i = 0;
+    let length = 5+i;
+    for (i ; i < length; i++) {
         var forecastItem = document.createElement('div');
         var forecastItemDate = document.createElement('div');
         var forecastItemTemp = document.createElement('div');
         var forecastItemIcon = document.createElement('img');
-        var forecastItemDescription = document.createElement('div');
+        var forecastItemHumidity = document.createElement('div');
+        var forecastItemWind = document.createElement('div');
         forecastItem.setAttribute('id', 'forecastItem')
         forecastItemDate.setAttribute('id', 'forecastDate')
         forecastItemTemp.setAttribute('id', 'forecastTemp')
         forecastItemIcon.setAttribute('id', 'icon');
-        forecastItemDescription.setAttribute('id', 'forecastDescrip');
-        var time = moment.unix(data.daily[i].dt).format("YYYY-MM-DD");
-        forecastItemDate.textContent = time;
+        forecastItemHumidity.setAttribute('id', 'forecastHumidity');
+        forecastItemWind.setAttribute('id', 'forecastWind');    
+        forecastItemDate.textContent = moment.unix(data.daily[i].dt).format("YYYY-MM-DD");
         forecastItemTemp.textContent = Math.round(data.daily[i].temp.day) + "℃";
         forecastItemIcon.src = `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
-        forecastItemDescription.textContent = data.daily[i].weather[0].main
+        forecastItemHumidity.textContent = data.daily[i].humidity+"%";
+        forecastItemWind.textContent = `${data.daily[i].wind_speed} K/M`;
         forecastItem.appendChild(forecastItemDate);
         forecastItem.appendChild(forecastItemIcon);
         forecastItem.appendChild(forecastItemTemp);
-        forecastItem.appendChild(forecastItemDescription);
+        forecastItem.appendChild(forecastItemHumidity);
+        forecastItem.appendChild(forecastItemWind);
         forecastEl.appendChild(forecastItem)
     }
 }
