@@ -18,7 +18,7 @@ header {
 
 .weather-dashboard-container {
   width:860px;
-  height: 600px;
+  height: 590px;
   margin-top: 20px;
   background: #fff;
   border-radius: 32px;
@@ -29,7 +29,7 @@ header {
   background-image: url(https://wallpaperaccess.com/full/1678258.png);
   background-size: cover;
   display: flex;
-  padding: 50px 0;
+  padding: 75px 0;
   flex-direction: row;
   background-size: cover;
   border-top-left-radius: 32px;
@@ -44,24 +44,37 @@ header {
   display: flex;
   flex-direction: column;
   align-items:center;
-
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+.current-weather-display-left-top{
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  text-align: center;
 }
 .current-weather-display-left-bottom{
+  width: 400px;
   display: flex;
   flex-direction: row;
   align-items:center;
-  margin-top: -10px;
   margin-left: 5px;
+  text-align: center;
 }
 #current-city {
-  font-size: 2.5rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 400;
 }
-
+#current-time{
+  letter-spacing: 2px;
+  font-weight: 300;
+}
 #current-temp {
-  font-size: 1.3rem;
+  font-size: 2rem;
 }
-
+#current-uvindex{
+  color: white;
+}
 .current-weather-display-right {
   width: 300px;
   text-align: center;
@@ -69,12 +82,17 @@ header {
   letter-spacing: 1px;
 }
 
+#current-icon{
+  width: 50px;
+  height: 50px;
+  margin-top: -9px;
+}
 .app-bottom {
   padding: 3%;
 }
 .search-header {
   font-size: 1.5rem;
-  letter-spacing: 2px;
+  letter-spacing: 0.5px;
   font-weight: 300;
 }
 
@@ -131,7 +149,7 @@ a {
   margin-bottom: 10%;
   font-size: small;
 }
-#icon, #current-icon{
+#icon{
   width: 70px;
   height: 70px;
 }
@@ -139,7 +157,7 @@ a {
   border-radius: 25px;
 }
 #forecastDate {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1rem;
 }
 #forecastTemp {
@@ -149,4 +167,46 @@ a {
 }
 #forecastHumidity,#forecastWind{
   color: rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 1200px) {
+  .weather-dashboard-container{
+    width: 355px;
+    height: 820px;
+  }
+  .current-weather-display{
+    flex-direction: column-reverse;
+    padding: 65px 0;
+  }
+  .current-weather-display-right{
+    margin-top: -50px;
+    margin-bottom: 10px;
+  }
+  .current-weather-display-left{
+    margin-top: 5px;
+    color: white;
+  }
+  .current-weather-display-left-bottom{
+    width: 300px;
+    font-size: 14px;
+  }
+  .app-bottom{
+    width: 355px;
+    flex-direction: column-reverse;
+  }
+  .search-section{
+    margin-top: 10px;
+    width: 355px;
+  }
+  .city-history-display{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin-left: -10px;
+  }
+  .city{
+    padding: 10px;
+    
+  }
 }

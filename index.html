@@ -15,18 +15,15 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <div class="main col">
-      <div class="weather-dashboard-container col-8">
+    <div class="main col-12">
+      <div class="weather-dashboard-container col-12 col-md-8 col-lg-8">
         <div class="current-weather-display">
           <div class="current-weather-display-left">
-            <div id="current-city"></div>
-            <div id="current-time"></div>
-            <div class="current-weather-display-left-bottom">
-              <div><span id="current-temp"></span></div>
-              <div><img id="current-icon" /></div>
-            </div>
-          </div>
-          <div class="current-weather-display-right row">
+              <div current-weather-display-left-top>
+                <span id="current-temp"></span>
+                <img id="current-icon" />
+              </div>
+            <div class="current-weather-display-left-bottom row">
             <div class="current-humidity-container col-4">
               <div>Humidity</div>
               <div id="current-humidity"></div>
@@ -39,6 +36,12 @@
               <div>UV index</div>
               <div id="current-uvindex"></div>
             </div>
+            </div>
+          </div>
+          <div class="current-weather-display-right">
+            <div id="current-city"></div>
+            <div id="current-time"></div>
+
           </div>
         </div>
         <div class="app-bottom row">
@@ -76,12 +79,8 @@
             </div>
           </div>
         </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+  </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
