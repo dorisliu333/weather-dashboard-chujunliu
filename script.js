@@ -8,7 +8,8 @@ const currentUvindex = document.querySelector('#current-uvindex');
 const forecastEl = document.querySelector('.forecastDisplay');
 const inputCity = document.querySelector('#cityName');
 const cityDisplayEl = document.querySelector('.city-history-display');
-// const myModalEl = document.querySelector('.my-modal');
+
+
 var currentCity = "Sydney";
 
 function getCityName() {
@@ -18,7 +19,6 @@ function getCityName() {
     inputCity.value = "";
 }
 
-// localStorage.clear()
 function displayCityHistory() {
     var prevCities = JSON.parse(localStorage.getItem("cities"));
     cityDisplayEl.innerHTML = '';
@@ -115,7 +115,7 @@ function displayForecast(data) {
         forecastItemDate.textContent = moment.unix(data.daily[i].dt).format("YYYY-MM-DD");
         forecastItemTemp.textContent = Math.round(data.daily[i].temp.day) + "℃";
         forecastItemIcon.src = `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`;
-        forecastItemHumidity.textContent = data.daily[i].humidity+"%";
+        forecastItemHumidity.textContent = `${data.daily[i].humidity} %`;
         forecastItemWind.textContent = `${data.daily[i].wind_speed} K/M`;
         forecastItem.appendChild(forecastItemDate);
         forecastItem.appendChild(forecastItemIcon);
@@ -144,6 +144,7 @@ function storeCityName(item) {
     cityList.push({ city: item })
     localStorage.setItem("cities", JSON.stringify(cityList))
 }
+
 
 function showError(){
     $('#myModal').modal('show');
